@@ -12,6 +12,15 @@
 		DBB844782BE63F0500C07D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB844772BE63F0500C07D39 /* Assets.xcassets */; };
 		DBB8447B2BE63F0500C07D39 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DBB8447A2BE63F0500C07D39 /* Base */; };
 		DBB844842BE643D800C07D39 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844832BE643D800C07D39 /* ConversationsViewController.swift */; };
+		DBB844872BE648DB00C07D39 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844862BE648DB00C07D39 /* ProfileViewController.swift */; };
+		DBB844892BE64A4100C07D39 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844882BE64A4100C07D39 /* MainTabBarController.swift */; };
+		DBB8448C2BE6514700C07D39 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8448B2BE6514700C07D39 /* LoginViewController.swift */; };
+		DBB8448E2BE67FBC00C07D39 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8448D2BE67FBC00C07D39 /* LoginView.swift */; };
+		DBB844902BE6853C00C07D39 /* LayoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8448F2BE6853C00C07D39 /* LayoutMetrics.swift */; };
+		DBB844932BE68B4B00C07D39 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844922BE68B4B00C07D39 /* Colors.swift */; };
+		DBB844962BE6C25500C07D39 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844952BE6C25500C07D39 /* RegisterViewController.swift */; };
+		DBB844982BE7D93D00C07D39 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844972BE7D93D00C07D39 /* RegisterView.swift */; };
+		DBB8449A2BE7DA3000C07D39 /* BaseComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844992BE7DA3000C07D39 /* BaseComponentsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		DBB8447A2BE63F0500C07D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB8447C2BE63F0500C07D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBB844832BE643D800C07D39 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		DBB844862BE648DB00C07D39 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DBB844882BE64A4100C07D39 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DBB8448B2BE6514700C07D39 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DBB8448D2BE67FBC00C07D39 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DBB8448F2BE6853C00C07D39 /* LayoutMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMetrics.swift; sourceTree = "<group>"; };
+		DBB844922BE68B4B00C07D39 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		DBB844952BE6C25500C07D39 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DBB844972BE7D93D00C07D39 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DBB844992BE7DA3000C07D39 /* BaseComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponentsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +72,16 @@
 		DBB8446D2BE63F0400C07D39 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				DBB844942BE6C23400C07D39 /* Register */,
+				DBB8448A2BE6511100C07D39 /* Login */,
+				DBB844852BE6489800C07D39 /* Profile */,
 				DBB844822BE6439D00C07D39 /* Conversations */,
 				DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */,
 				DBB844702BE63F0400C07D39 /* SceneDelegate.swift */,
+				DBB844882BE64A4100C07D39 /* MainTabBarController.swift */,
+				DBB8448F2BE6853C00C07D39 /* LayoutMetrics.swift */,
+				DBB844992BE7DA3000C07D39 /* BaseComponentsFactory.swift */,
+				DBB844922BE68B4B00C07D39 /* Colors.swift */,
 				DBB844772BE63F0500C07D39 /* Assets.xcassets */,
 				DBB844792BE63F0500C07D39 /* LaunchScreen.storyboard */,
 				DBB8447C2BE63F0500C07D39 /* Info.plist */,
@@ -70,6 +95,32 @@
 				DBB844832BE643D800C07D39 /* ConversationsViewController.swift */,
 			);
 			path = Conversations;
+			sourceTree = "<group>";
+		};
+		DBB844852BE6489800C07D39 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DBB844862BE648DB00C07D39 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DBB8448A2BE6511100C07D39 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DBB8448B2BE6514700C07D39 /* LoginViewController.swift */,
+				DBB8448D2BE67FBC00C07D39 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DBB844942BE6C23400C07D39 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				DBB844952BE6C25500C07D39 /* RegisterViewController.swift */,
+				DBB844972BE7D93D00C07D39 /* RegisterView.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +193,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBB844982BE7D93D00C07D39 /* RegisterView.swift in Sources */,
+				DBB8448C2BE6514700C07D39 /* LoginViewController.swift in Sources */,
+				DBB844932BE68B4B00C07D39 /* Colors.swift in Sources */,
+				DBB8448E2BE67FBC00C07D39 /* LoginView.swift in Sources */,
 				DBB844842BE643D800C07D39 /* ConversationsViewController.swift in Sources */,
+				DBB844962BE6C25500C07D39 /* RegisterViewController.swift in Sources */,
+				DBB844902BE6853C00C07D39 /* LayoutMetrics.swift in Sources */,
+				DBB8449A2BE7DA3000C07D39 /* BaseComponentsFactory.swift in Sources */,
 				DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */,
+				DBB844892BE64A4100C07D39 /* MainTabBarController.swift in Sources */,
+				DBB844872BE648DB00C07D39 /* ProfileViewController.swift in Sources */,
 				DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
