@@ -8,20 +8,24 @@
 import UIKit
 
 final class ConversationsViewController: UIViewController {
+    
+    private var isFirstLauch = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        title = "Чаты"
-
-    }
     
+        title = "Чаты"
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showLoginScreen()
+        if isFirstLauch {
+            showLoginScreen()
+        }
+        isFirstLauch = false
     }
     
     private func showLoginScreen() {
@@ -29,7 +33,5 @@ final class ConversationsViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         
         present(viewController, animated: true)
-        
     }
-
 }

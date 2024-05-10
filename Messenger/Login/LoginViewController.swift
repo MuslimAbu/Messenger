@@ -30,20 +30,30 @@ final class LoginViewController: UIViewController {
     private func setupActions() {
         mainView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchDown)
         mainView.registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchDown)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(registrationDidFinish),
+            name: Notifications.registrationDidFinish,
+            object: nil
+        )
     }
     
     @objc
-    
     private func loginButtonTapped() {
         dismiss(animated: true)
     }
     
     @objc
-    
     private func registerButtonTapped() {
         let viewController = RegisterViewController()
         viewController.modalPresentationStyle = .fullScreen
         
         present(viewController, animated: true)
+    }
+    
+    @objc
+    private func registrationDidFinish() {
+        dismiss(animated: true)
     }
 }

@@ -8,10 +8,6 @@
 import UIKit
 
 final class LoginView: UIView {
-    
-    private enum Constants {
-        static let maxComponentHeight: CGFloat = LayoutMetrics.module * 7
-    }
 
     // MARK: UI elements
     
@@ -76,7 +72,6 @@ final class LoginView: UIView {
         ).isActive = true
         emailTextField.leadingAnchor.constraint(equalTo: greetingLabel.leadingAnchor).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: greetingLabel.trailingAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: Constants.maxComponentHeight).isActive = true
     }
     
     private func setupPasswordTextFieldLayout() {
@@ -88,7 +83,6 @@ final class LoginView: UIView {
         ).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: Constants.maxComponentHeight).isActive = true
     }
     
     private func setupLoginButtonLayout() {
@@ -100,7 +94,6 @@ final class LoginView: UIView {
             equalTo: passwordTextField.bottomAnchor,
             constant: LayoutMetrics.module * 7
         ).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: Constants.maxComponentHeight).isActive = true
     }
     
     private func setupRegisterButtonLayout() {
@@ -108,23 +101,5 @@ final class LoginView: UIView {
         
         registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -LayoutMetrics.module * 3).isActive = true
         registerButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    }
-}
-
-// MARK: - Factory
-
-extension LoginView {
-    
-    private func makeTextField(placeholder: String?) -> UITextField {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Enter your Email"
-        textField.backgroundColor = Colors.lightGrayBackgroundColor
-        textField.leftViewMode = .always
-        textField.leftView = UIView(frame: .init(x: 0, y: 0, width: LayoutMetrics.doubleModule, height: 0))
-        textField.textColor = Colors.lightGrayTextColor
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = Colors.lightGrayBorderColor.cgColor
-        return textField
     }
 }
