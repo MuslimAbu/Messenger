@@ -10,6 +10,7 @@ import UIKit
 final class RegisterViewController: UIViewController {
     
     private let mainView = RegisterView()
+    private let networkService = RegisterNetworkService()
     
     // MARK: - Lifecycle
     
@@ -66,9 +67,18 @@ extension RegisterViewController {
         
         guard isUsernameValid, isEmailValid, isPasswordValie else { return }
         
-        NotificationCenter.default.post(name: Notifications.registrationDidFinish, object: nil)
-                
-        dismiss(animated: true)
+        networkService.register(email: email, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let email):
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: Notifications.loginDidFinish, object: nil)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func handleEmail(_ email: String) -> Bool {

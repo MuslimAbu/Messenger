@@ -23,18 +23,18 @@ struct BaseComponentsFactory {
         return textField
     }
     
-    static func makeActionButton(title: String) -> UIButton {
+    static func makeActionButton(title: String, color: UIColor = Colors.buttonDark) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
-        button.backgroundColor = Colors.buttonDark
+        button.backgroundColor = color
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = LayoutMetrics.module
         button.heightAnchor.constraint(equalToConstant: LayoutMetrics.module * 7).isActive = true
         return button
     }
     
-    static func makeGreetingLabel(title: String) -> UILabel {
+    static func makeGreetingLabel(title: String?) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title

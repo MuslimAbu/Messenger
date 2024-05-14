@@ -14,6 +14,8 @@
 		DB0FD3112BEEA87D002F771B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DB0FD3102BEEA87D002F771B /* FirebaseFirestore */; };
 		DB0FD3132BEEA87D002F771B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB0FD3122BEEA87D002F771B /* FirebaseFirestoreSwift */; };
 		DB0FD3152BEEA87D002F771B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DB0FD3142BEEA87D002F771B /* FirebaseStorage */; };
+		DB0FD3172BEF8CD0002F771B /* RegisterNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3162BEF8CD0002F771B /* RegisterNetworkService.swift */; };
+		DB0FD31A2BF39377002F771B /* LoginNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3192BF39377002F771B /* LoginNetworkService.swift */; };
 		DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */; };
 		DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844702BE63F0400C07D39 /* SceneDelegate.swift */; };
 		DBB844782BE63F0500C07D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB844772BE63F0500C07D39 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB0FD3162BEF8CD0002F771B /* RegisterNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetworkService.swift; sourceTree = "<group>"; };
+		DB0FD3192BF39377002F771B /* LoginNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkService.swift; sourceTree = "<group>"; };
 		DBB8446B2BE63F0400C07D39 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB844702BE63F0400C07D39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,12 +76,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB0FD3182BEFF470002F771B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DBB844622BE63F0400C07D39 = {
 			isa = PBXGroup;
 			children = (
 				DBED38AF2BEEA03F00570271 /* GoogleService-Info.plist */,
 				DBB8446D2BE63F0400C07D39 /* Messenger */,
 				DBB8446C2BE63F0400C07D39 /* Products */,
+				DB0FD3182BEFF470002F771B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +144,7 @@
 			children = (
 				DBB8448B2BE6514700C07D39 /* LoginViewController.swift */,
 				DBB8448D2BE67FBC00C07D39 /* LoginView.swift */,
+				DB0FD3192BF39377002F771B /* LoginNetworkService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -141,6 +154,7 @@
 			children = (
 				DBB844952BE6C25500C07D39 /* RegisterViewController.swift */,
 				DBB844972BE7D93D00C07D39 /* RegisterView.swift */,
+				DB0FD3162BEF8CD0002F771B /* RegisterNetworkService.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -233,10 +247,12 @@
 				DBB844932BE68B4B00C07D39 /* Colors.swift in Sources */,
 				DBB8448E2BE67FBC00C07D39 /* LoginView.swift in Sources */,
 				DBB844842BE643D800C07D39 /* ConversationsViewController.swift in Sources */,
+				DB0FD31A2BF39377002F771B /* LoginNetworkService.swift in Sources */,
 				DBB8449C2BEBDDDF00C07D39 /* Notifications.swift in Sources */,
 				DBB844962BE6C25500C07D39 /* RegisterViewController.swift in Sources */,
 				DBB844902BE6853C00C07D39 /* LayoutMetrics.swift in Sources */,
 				DBB8449A2BE7DA3000C07D39 /* BaseComponentsFactory.swift in Sources */,
+				DB0FD3172BEF8CD0002F771B /* RegisterNetworkService.swift in Sources */,
 				DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */,
 				DBB844892BE64A4100C07D39 /* MainTabBarController.swift in Sources */,
 				DBB844872BE648DB00C07D39 /* ProfileViewController.swift in Sources */,
@@ -386,9 +402,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Messenger/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Пожалуйста, дайте доступ к камере";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -417,9 +436,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Messenger/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Пожалуйста, дайте доступ к камере";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

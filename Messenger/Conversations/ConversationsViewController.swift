@@ -6,10 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class ConversationsViewController: UIViewController {
-    
-    private var isFirstLauch = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,21 +16,5 @@ final class ConversationsViewController: UIViewController {
         view.backgroundColor = .white
     
         title = "Чаты"
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if isFirstLauch {
-            showLoginScreen()
-        }
-        isFirstLauch = false
-    }
-    
-    private func showLoginScreen() {
-        let viewController = LoginViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        
-        present(viewController, animated: true)
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct Notifications {
-    static let registrationDidFinish = Notification.Name("registrationDidFinish")
+    static let loginDidFinish = Notification.Name("loginDidFinish")
 }

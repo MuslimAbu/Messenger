@@ -10,6 +10,7 @@ import UIKit
 final class LoginViewController: UIViewController {
     
     private let mainView = LoginView()
+    private let networkService = LoginNetworkService()
     
     // MARK: - Lifecycle
     
@@ -22,6 +23,9 @@ final class LoginViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        mainView.passwordTextField.isSecureTextEntry = true
+        mainView.emailTextField.autocapitalizationType = .none
+        
         setupActions()
     }
     
@@ -33,14 +37,32 @@ final class LoginViewController: UIViewController {
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(registrationDidFinish),
-            name: Notifications.registrationDidFinish,
+            selector: #selector(loginDidFinish),
+            name: Notifications.loginDidFinish,
             object: nil
         )
     }
     
     @objc
     private func loginButtonTapped() {
+        guard let email = mainView.emailTextField.text,
+              let password = mainView.passwordTextField.text
+        else {
+            return
+        }
+        
+        networkService.login(email: email, password: password) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let email):
+                NotificationCenter.default.post(name: Notifications.loginDidFinish, object: nil)
+                self.dismiss(animated: true)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
         dismiss(animated: true)
     }
     
@@ -53,7 +75,7 @@ final class LoginViewController: UIViewController {
     }
     
     @objc
-    private func registrationDidFinish() {
+    private func loginDidFinish() {
         dismiss(animated: true)
     }
 }

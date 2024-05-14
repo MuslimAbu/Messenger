@@ -12,8 +12,8 @@ final class LoginView: UIView {
     // MARK: UI elements
     
     private let greetingLabel = BaseComponentsFactory.makeGreetingLabel(title: "Welcome back! Glad to see you, Again!")
-    private lazy var emailTextField = BaseComponentsFactory.makeTextField(placeholder: "Enter your email")
-    private lazy var passwordTextField = BaseComponentsFactory.makeTextField(placeholder: "Enter your password")
+    lazy var emailTextField = BaseComponentsFactory.makeTextField(placeholder: "Enter your email")
+    lazy var passwordTextField = BaseComponentsFactory.makeTextField(placeholder: "Enter your password")
     
     lazy var loginButton = BaseComponentsFactory.makeActionButton(title: "Login")
     
