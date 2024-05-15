@@ -60,6 +60,7 @@ final class RegisterView: UIView {
         
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
+        emailTextField.autocapitalizationType = .none
     }
     
     private func setupLayout() {

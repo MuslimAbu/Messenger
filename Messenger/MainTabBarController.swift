@@ -11,7 +11,7 @@ import FirebaseAuth
 final class MainTabBarController: UITabBarController {
     
     private var conversationViewController: UINavigationController {
-        let viewController = ConversationsViewController()
+        let viewController = ConversationListViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem = UITabBarItem(
             title: "Chats",
