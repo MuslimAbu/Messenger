@@ -9,6 +9,12 @@ import UIKit
 
 final class RegisterView: UIView {
     
+    var profilePicture: UIImage? {
+        didSet {
+            profileImageView.image = profilePicture
+        }
+    }
+    
     private lazy var greetingLabel = BaseComponentsFactory.makeGreetingLabel(title: "Hello, Register to get started")
     lazy var usernameTextField = BaseComponentsFactory.makeTextField(placeholder: "Username")
     lazy var emailTextField = BaseComponentsFactory.makeTextField(placeholder: "Email")

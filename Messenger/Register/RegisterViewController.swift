@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class RegisterViewController: UIViewController {
     
@@ -72,9 +73,36 @@ extension RegisterViewController {
             
             switch result {
             case .success(let email):
+                let user = User(username: username, email: email)
+                
+                UserDefaults.standard.set(user.email, forKey: "user_email")
+                UserDefaults.standard.set(user.username, forKey: "user_username")
+                
+                DatabaseManager.shared.saveUser(user)
+                
+                self.uploadProfilePicture(user: user)
+                
                 self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: Notifications.loginDidFinish, object: nil)
+                        NotificationCenter.default.post(name: Notifications.loginDidFinish, object: nil)
+                
                 }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func uploadProfilePicture(user: User) {
+        guard let profilePicture = self.mainView.profilePicture,
+              let data = profilePicture.pngData()
+        else {
+            return
+        }
+        
+        StorageManager.shared.upload(data: data, filename: user.pictureFilename) { result in
+            switch result {
+            case .success:
+                UserDefaults.standard.set(data, forKey: "user_profilepicture")
             case .failure(let error):
                 print(error)
             }
@@ -184,7 +212,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate {
             return
         }
         
-        mainView.profileImageView.image = image
+        mainView.profilePicture = image
         
         picker.dismiss(animated: true)
     }

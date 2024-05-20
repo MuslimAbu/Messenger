@@ -22,6 +22,7 @@ final class ProfileViewController: UIViewController {
         return imageView
     }()
     
+    private let usernameLabel = BaseComponentsFactory.makeGreetingLabel(title: nil)
     private let emailLabel = BaseComponentsFactory.makeGreetingLabel(title: nil)
     private let logOutButton = BaseComponentsFactory.makeActionButton(title: "Log out", color: .systemRed)
     
@@ -42,7 +43,12 @@ final class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        emailLabel.text = FirebaseAuth.Auth.auth().currentUser?.email
+        emailLabel.text = UserDefaults.standard.value(forKey: "user_email") as? String
+        usernameLabel.text = UserDefaults.standard.value(forKey: "user_username") as? String
+        
+        if let pictureData = UserDefaults.standard.value(forKey: "user_profilepicture") as? Data {
+            profileImageView.image = UIImage(data: pictureData)
+        }
     }
     
     // MARK: - Private methods
@@ -89,6 +95,7 @@ extension ProfileViewController {
     
     private func setupLayout() {
         setupEmailTextFieldLayout()
+        setupusernameLabelLayout()
         setupEmailLabelLayout()
         setupLogOutButtonLayout()
     }
@@ -102,11 +109,18 @@ extension ProfileViewController {
         profileImageView.widthAnchor.constraint(equalToConstant: LayoutMetrics.module * 20).isActive = true
     }
     
+    private func setupusernameLabelLayout() {
+        view.addSubview(usernameLabel)
+        
+        usernameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
+        usernameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: LayoutMetrics.module).isActive = true
+    }
+    
     private func setupEmailLabelLayout() {
         view.addSubview(emailLabel)
         
         emailLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
-        emailLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: LayoutMetrics.module).isActive = true
+        emailLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: LayoutMetrics.module).isActive = true
     }
     
     private func setupLogOutButtonLayout() {

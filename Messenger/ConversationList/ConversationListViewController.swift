@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 final class ConversationListViewController: UIViewController {
     
@@ -17,7 +16,7 @@ final class ConversationListViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.rowHeight = LayoutMetrics.halfModule * 10
+        tableView.rowHeight = LayoutMetrics.module * 10
         return tableView
     }()
     

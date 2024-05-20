@@ -56,7 +56,18 @@ final class LoginViewController: UIViewController {
             
             switch result {
             case .success(let email):
+                DatabaseManager.shared.getUser(email: email) { result in
+                    switch result {
+                    case .success(let user):
+                        UserDefaults.standard.set(user.email, forKey: "user_email")
+                        UserDefaults.standard.set(user.username, forKey: "user_username")
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+                
                 NotificationCenter.default.post(name: Notifications.loginDidFinish, object: nil)
+                
                 self.dismiss(animated: true)
             case .failure(let error):
                 print(error)
