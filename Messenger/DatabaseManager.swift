@@ -23,6 +23,7 @@ extension DatabaseManager {
     
     enum DatabaseManagerError: Error {
         case error
+        case allUsers
     }
     
     func saveUser(_ user: User) {
@@ -30,7 +31,25 @@ extension DatabaseManager {
             "username": user.username.safe
         ]
         
-        database.child(user.email.safe).setValue(userData)
+        database.child(user.email.safe).setValue(userData) { error, reference in
+            guard error == nil else {
+                return
+            }
+            
+            database.child("users").observeSingleEvent(of: .value) { snapshot in
+                let user = [
+                    "email": user.email.safe,
+                    "username": user.username.safe
+                ]
+                
+                if var users = snapshot.value as? [[String : String]] {
+                    users.append(user)
+                    database.child("users").setValue(users)
+                } else {
+                    database.child("users").setValue([user])
+                }
+            }
+        }
     }
     
     func getUser(email: String, completion: @escaping (Result<User, Error>) -> Void) {
@@ -48,6 +67,21 @@ extension DatabaseManager {
             
             completion(
                 .success(user)
+            )
+        }
+    }
+    
+    func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+        database.child("users").observeSingleEvent(of: .value) { snapshot in
+            guard let users = snapshot.value as? [[String: String]] else {
+                completion(
+                    .failure(DatabaseManagerError.allUsers)
+                )
+                return
+            }
+            
+            completion(
+                .success(users)
             )
         }
     }

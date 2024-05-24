@@ -27,7 +27,13 @@ final class ConversationListViewController: UIViewController {
         
         view.backgroundColor = .white
     
-        title = "Чаты"
+        title = "Chats"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .compose,
+            target: self,
+            action: #selector(newChatButtonTapped)
+        )
         
         setupSearchController()
         setupTableView()
@@ -59,6 +65,21 @@ final class ConversationListViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
+    
+    @objc
+    private func newChatButtonTapped() {
+        let vc = NewConversationViewController()
+        vc.completion = { [weak self] title in
+            self?.showConversationViewController(title: title)
+        }
+        present(vc, animated: true)
+    }
+    
+    private func showConversationViewController(title: String) {
+        let viewcontroller = ConversationViewController()
+        viewcontroller.title = title
+        navigationController?.pushViewController(viewcontroller, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -88,7 +109,6 @@ extension ConversationListViewController: UITableViewDataSource {
 extension ConversationListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ConversationViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        showConversationViewController(title: "")
     }
 }

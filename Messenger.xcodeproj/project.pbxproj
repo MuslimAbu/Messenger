@@ -23,6 +23,9 @@
 		DB0FD3262BF6757E002F771B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3252BF6757E002F771B /* User.swift */; };
 		DB0FD3282BF6974F002F771B /* String+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3272BF6974F002F771B /* String+Safe.swift */; };
 		DB0FD32A2BF8E2FF002F771B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3292BF8E2FF002F771B /* StorageManager.swift */; };
+		DB0FD32D2BFE7F12002F771B /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD32C2BFE7F12002F771B /* NewConversationViewController.swift */; };
+		DB0FD32F2BFF552A002F771B /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD32E2BFF552A002F771B /* ChatUser.swift */; };
+		DB0FD3312BFFD497002F771B /* NewConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */; };
 		DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */; };
 		DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844702BE63F0400C07D39 /* SceneDelegate.swift */; };
 		DBB844782BE63F0500C07D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB844772BE63F0500C07D39 /* Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		DB0FD3252BF6757E002F771B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB0FD3272BF6974F002F771B /* String+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Safe.swift"; sourceTree = "<group>"; };
 		DB0FD3292BF8E2FF002F771B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		DB0FD32C2BFE7F12002F771B /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		DB0FD32E2BFF552A002F771B /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationTableViewCell.swift; sourceTree = "<group>"; };
 		DBB8446B2BE63F0400C07D39 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB844702BE63F0400C07D39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,8 +115,18 @@
 			isa = PBXGroup;
 			children = (
 				DB0FD3252BF6757E002F771B /* User.swift */,
+				DB0FD32E2BFF552A002F771B /* ChatUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DB0FD32B2BFE7EC7002F771B /* NewConversation */ = {
+			isa = PBXGroup;
+			children = (
+				DB0FD32C2BFE7F12002F771B /* NewConversationViewController.swift */,
+				DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */,
+			);
+			path = NewConversation;
 			sourceTree = "<group>";
 		};
 		DBB844622BE63F0400C07D39 = {
@@ -134,6 +150,7 @@
 		DBB8446D2BE63F0400C07D39 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				DB0FD32B2BFE7EC7002F771B /* NewConversation */,
 				DB0FD3242BF6756A002F771B /* Models */,
 				DB0FD31B2BF4C465002F771B /* Conversation */,
 				DBB844942BE6C23400C07D39 /* Register */,
@@ -279,12 +296,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB0FD32F2BFF552A002F771B /* ChatUser.swift in Sources */,
 				DBB844982BE7D93D00C07D39 /* RegisterView.swift in Sources */,
 				DBB8448C2BE6514700C07D39 /* LoginViewController.swift in Sources */,
 				DBB844932BE68B4B00C07D39 /* Colors.swift in Sources */,
 				DBB8448E2BE67FBC00C07D39 /* LoginView.swift in Sources */,
 				DBB844842BE643D800C07D39 /* ConversationListViewController.swift in Sources */,
 				DB0FD3282BF6974F002F771B /* String+Safe.swift in Sources */,
+				DB0FD3312BFFD497002F771B /* NewConversationTableViewCell.swift in Sources */,
 				DB0FD31A2BF39377002F771B /* LoginNetworkService.swift in Sources */,
 				DBB8449C2BEBDDDF00C07D39 /* Notifications.swift in Sources */,
 				DBB844962BE6C25500C07D39 /* RegisterViewController.swift in Sources */,
@@ -294,6 +313,7 @@
 				DB0FD31F2BF53297002F771B /* ConversationListTableViewCell.swift in Sources */,
 				DB0FD32A2BF8E2FF002F771B /* StorageManager.swift in Sources */,
 				DB0FD31D2BF4C4C1002F771B /* ConversationViewController.swift in Sources */,
+				DB0FD32D2BFE7F12002F771B /* NewConversationViewController.swift in Sources */,
 				DB0FD3212BF53713002F771B /* Conversation.swift in Sources */,
 				DB0FD3172BEF8CD0002F771B /* RegisterNetworkService.swift in Sources */,
 				DB0FD3232BF673CA002F771B /* DatabaseManager.swift in Sources */,

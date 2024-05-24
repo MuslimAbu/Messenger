@@ -1,15 +1,15 @@
 //
-//  ConversationListTableViewCell.swift
+//  NewConversationTableViewCell.swift
 //  Messenger
 //
-//  Created by Муслим on 15.05.2024.
+//  Created by Муслим on 23.05.2024.
 //
 
 import UIKit
 
-final class ConversationListTableViewCell: UITableViewCell {
-    
-    static let reuseId = "ConversationListTableViewCell"
+final class NewConversationTableViewCell: UITableViewCell {
+
+    static let reuseId = "NewConversationTableViewCell"
 
     // MARK: - UI Elements
     
@@ -73,10 +73,14 @@ final class ConversationListTableViewCell: UITableViewCell {
     private func setupSubtitleLabelLayout() {
         contentView.addSubview(subtitleLabel)
         
-        titleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
     }
     
-    func configure() {}
+    func configure(user: ChatUser) {
+        conversationImageView.image = user.picture
+        titleLabel.text = user.email
+        subtitleLabel.text = user.username
+    }
 }

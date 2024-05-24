@@ -23,6 +23,7 @@ extension StorageManager {
     
     enum StorageMangerError: Error {
         case uploadPictureError
+        case downloadUrlError
     }
     
     func upload(data: Data, filename: String, completion: @escaping (Result<String, Error>) -> Void) {
@@ -33,11 +34,21 @@ extension StorageManager {
                 )
                 return
             }
+        }
+    }
+    
+    func url(for path: String, completion: @escaping(Result<URL, Error>) -> Void) {
+        storage.child(path).downloadURL { url, error in
+            guard let url = url, error == nil else {
+                completion(
+                    .failure(StorageMangerError.downloadUrlError)
+                )
+                return
+            }
             
             completion(
-                .success("")
+                .success(url)
             )
         }
     }
 }
-

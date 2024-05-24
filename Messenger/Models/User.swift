@@ -12,6 +12,6 @@ struct User {
     let email: String
     
     var pictureFilename: String {
-        email.safe + "-picture"
+        email.safe + "-picture.png"
     }
 }

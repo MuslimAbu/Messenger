@@ -14,6 +14,5 @@ final class ConversationViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        title = "Chat"
     }
 }

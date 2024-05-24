@@ -61,6 +61,16 @@ final class LoginViewController: UIViewController {
                     case .success(let user):
                         UserDefaults.standard.set(user.email, forKey: "user_email")
                         UserDefaults.standard.set(user.username, forKey: "user_username")
+                        
+                        StorageManager.shared.url(for: user.pictureFilename) { result in
+                            switch result {
+                            case .success(let url):
+                                UserDefaults.standard.set(user.username, forKey: "user_profile_picture_url")
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
                     case .failure(let error):
                         print(error)
                     }
@@ -73,8 +83,6 @@ final class LoginViewController: UIViewController {
                 print(error)
             }
         }
-        
-        dismiss(animated: true)
     }
     
     @objc
