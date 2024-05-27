@@ -26,6 +26,7 @@
 		DB0FD32D2BFE7F12002F771B /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD32C2BFE7F12002F771B /* NewConversationViewController.swift */; };
 		DB0FD32F2BFF552A002F771B /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD32E2BFF552A002F771B /* ChatUser.swift */; };
 		DB0FD3312BFFD497002F771B /* NewConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */; };
+		DB66CD302C050C600074F951 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = DB66CD2F2C050C600074F951 /* MessageKit */; };
 		DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */; };
 		DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844702BE63F0400C07D39 /* SceneDelegate.swift */; };
 		DBB844782BE63F0500C07D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB844772BE63F0500C07D39 /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 				DB0FD3152BEEA87D002F771B /* FirebaseStorage in Frameworks */,
 				DB0FD30B2BEEA87D002F771B /* FirebaseAuth in Frameworks */,
 				DB0FD3132BEEA87D002F771B /* FirebaseFirestoreSwift in Frameworks */,
+				DB66CD302C050C600074F951 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +239,7 @@
 				DB0FD3102BEEA87D002F771B /* FirebaseFirestore */,
 				DB0FD3122BEEA87D002F771B /* FirebaseFirestoreSwift */,
 				DB0FD3142BEEA87D002F771B /* FirebaseStorage */,
+				DB66CD2F2C050C600074F951 /* MessageKit */,
 			);
 			productName = Messenger;
 			productReference = DBB8446B2BE63F0400C07D39 /* Messenger.app */;
@@ -268,6 +271,7 @@
 			mainGroup = DBB844622BE63F0400C07D39;
 			packageReferences = (
 				DBED38AE2BEE9E2B00570271 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DB66CD2E2C050C600074F951 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = DBB8446C2BE63F0400C07D39 /* Products */;
 			projectDirPath = "";
@@ -549,6 +553,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DB66CD2E2C050C600074F951 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		DBED38AE2BEE9E2B00570271 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -594,6 +606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DBED38AE2BEE9E2B00570271 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		DB66CD2F2C050C600074F951 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB66CD2E2C050C600074F951 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

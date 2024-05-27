@@ -11,14 +11,24 @@ final class NewConversationViewController: UIViewController {
     
     var completion: ((String) -> Void)?
     
+    private var fetchedUsers: [ChatUser] = []
+    
     private var items: [ChatUser] = []
 
     // MARK: - UI Elements
     
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.placeholder = "Search"
+        return searchBar
+    }()
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = LayoutMetrics.module * 10
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -27,8 +37,9 @@ final class NewConversationViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        searchBar.delegate = self
+        
         setupTableView()
-        fetchData()
     }
 
     // MARK: - Private methods
@@ -39,7 +50,17 @@ final class NewConversationViewController: UIViewController {
         
         tableView.register(NewConversationTableViewCell.self, forCellReuseIdentifier: NewConversationTableViewCell.reuseId)
         
+        setupSearchBarLayout()
         setupTableViewLayout()
+    }
+    
+    private func setupSearchBarLayout() {
+        view.addSubview(searchBar)
+        
+        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutMetrics.doubleModule).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutMetrics.doubleModule).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
     private func setupTableViewLayout() {
@@ -47,18 +68,18 @@ final class NewConversationViewController: UIViewController {
         
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    private func fetchData() {
+    private func fetchData(completion: @escaping ([ChatUser]) -> Void) {
         DatabaseManager.shared.getAllUsers { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let users):
-                self.items = self.convert(from: users)
-                self.tableView.reloadData()
+                self.fetchedUsers = self.convert(from: users)
+                completion(fetchedUsers)
             case .failure(let error):
                 print(error)
             }
@@ -121,5 +142,29 @@ extension NewConversationViewController: UITableViewDelegate {
         dismiss(animated: true) { [weak self] in
             self?.completion?(item.username)
         }
+    }
+}
+
+extension NewConversationViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        
+        if !fetchedUsers.isEmpty {
+            displayUsers(users: fetchedUsers, searchText: searchText)
+        } else {
+            fetchData() { [weak self] users in
+                guard let self = self else { return }
+                
+                self.items = users.filter { $0.username.lowercased().hasPrefix(searchText.lowercased()) }
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    private func displayUsers(users: [ChatUser], searchText: String) {
+        self.items = users.filter {
+            $0.username.lowercased().hasPrefix(searchText.lowercased())
+        }
+        self.tableView.reloadData()
     }
 }
