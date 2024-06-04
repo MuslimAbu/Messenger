@@ -27,6 +27,7 @@
 		DB0FD32F2BFF552A002F771B /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD32E2BFF552A002F771B /* ChatUser.swift */; };
 		DB0FD3312BFFD497002F771B /* NewConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */; };
 		DB66CD302C050C600074F951 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = DB66CD2F2C050C600074F951 /* MessageKit */; };
+		DB66CD322C08929D0074F951 /* ProfileUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66CD312C08929D0074F951 /* ProfileUserDefaults.swift */; };
 		DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */; };
 		DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB844702BE63F0400C07D39 /* SceneDelegate.swift */; };
 		DBB844782BE63F0500C07D39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB844772BE63F0500C07D39 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		DB0FD32C2BFE7F12002F771B /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		DB0FD32E2BFF552A002F771B /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		DB0FD3302BFFD497002F771B /* NewConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationTableViewCell.swift; sourceTree = "<group>"; };
+		DB66CD312C08929D0074F951 /* ProfileUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserDefaults.swift; sourceTree = "<group>"; };
 		DBB8446B2BE63F0400C07D39 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB8446E2BE63F0400C07D39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBB844702BE63F0400C07D39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				DBB844772BE63F0500C07D39 /* Assets.xcassets */,
 				DBB844792BE63F0500C07D39 /* LaunchScreen.storyboard */,
 				DBB8447C2BE63F0500C07D39 /* Info.plist */,
+				DB66CD312C08929D0074F951 /* ProfileUserDefaults.swift */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				DB0FD3172BEF8CD0002F771B /* RegisterNetworkService.swift in Sources */,
 				DB0FD3232BF673CA002F771B /* DatabaseManager.swift in Sources */,
 				DBB8446F2BE63F0400C07D39 /* AppDelegate.swift in Sources */,
+				DB66CD322C08929D0074F951 /* ProfileUserDefaults.swift in Sources */,
 				DBB844892BE64A4100C07D39 /* MainTabBarController.swift in Sources */,
 				DBB844872BE648DB00C07D39 /* ProfileViewController.swift in Sources */,
 				DBB844712BE63F0400C07D39 /* SceneDelegate.swift in Sources */,

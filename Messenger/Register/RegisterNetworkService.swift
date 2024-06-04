@@ -25,7 +25,9 @@ final class RegisterNetworkService {
                 return
             }
             
-            completion(.success(email))
+            completion(
+                .success(email)
+            )
         }
     }
 }

@@ -43,11 +43,13 @@ final class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        emailLabel.text = UserDefaults.standard.value(forKey: "user_email") as? String
-        usernameLabel.text = UserDefaults.standard.value(forKey: "user_username") as? String
+        emailLabel.text = ProfileUserDefaults.email
+        usernameLabel.text = ProfileUserDefaults.username
         
-        if let pictureData = UserDefaults.standard.value(forKey: "user_profilepicture") as? Data {
-            profileImageView.image = UIImage(data: pictureData)
+        if let avatarData = ProfileUserDefaults.avatarData {
+            profileImageView.image = UIImage(data: avatarData)
+        } else if let avatarUrl = ProfileUserDefaults.avatarUrl {
+            fetchAvatar(url: avatarUrl)
         }
     }
     
@@ -87,6 +89,31 @@ final class ProfileViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         
         present(viewController, animated: true)
+    }
+    
+    private func fetchAvatar(url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { [weak self] data, _ , error in
+            guard let data = data, error == nil else {
+                print("Can not fetch avatar")
+                return
+            }
+            
+            guard let avatar = UIImage(data: data) else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self?.profileImageView.image = avatar
+            }
+            
+            ProfileUserDefaults.handleAvatarData(data)
+        }.resume()
     }
 }
     // MARK: - Layout

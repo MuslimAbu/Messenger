@@ -69,15 +69,15 @@ final class ConversationListViewController: UIViewController {
     @objc
     private func newChatButtonTapped() {
         let vc = NewConversationViewController()
-        vc.completion = { [weak self] title in
-            self?.showConversationViewController(title: title)
+        vc.completion = { [weak self] username, email in
+            self?.showConversationViewController(username: username, email: email)
         }
         present(vc, animated: true)
     }
     
-    private func showConversationViewController(title: String) {
-        let viewcontroller = ConversationViewController()
-        viewcontroller.title = title
+    private func showConversationViewController(username: String, email: String) {
+        let viewcontroller = ConversationViewController(otherUserEmail: email)
+        viewcontroller.title = username
         navigationController?.pushViewController(viewcontroller, animated: true)
     }
 }
@@ -109,6 +109,6 @@ extension ConversationListViewController: UITableViewDataSource {
 extension ConversationListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showConversationViewController(title: "")
+        showConversationViewController(username: "", email: "")
     }
 }

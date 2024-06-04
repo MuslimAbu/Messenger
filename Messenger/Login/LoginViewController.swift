@@ -59,14 +59,14 @@ final class LoginViewController: UIViewController {
                 DatabaseManager.shared.getUser(email: email) { result in
                     switch result {
                     case .success(let user):
-                        UserDefaults.standard.set(user.email, forKey: "user_email")
-                        UserDefaults.standard.set(user.username, forKey: "user_username")
+                        ProfileUserDefaults.handleUser(user)
                         
                         StorageManager.shared.url(for: user.pictureFilename) { result in
                             switch result {
                             case .success(let url):
-                                UserDefaults.standard.set(user.username, forKey: "user_profile_picture_url")
+                                ProfileUserDefaults.handleAvatarUrl(url)
                             case .failure(let error):
+                                ProfileUserDefaults.handleAvatarUrl(nil)
                                 print(error)
                             }
                         }

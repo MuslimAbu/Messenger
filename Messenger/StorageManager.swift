@@ -37,8 +37,8 @@ extension StorageManager {
         }
     }
     
-    func url(for path: String, completion: @escaping(Result<URL, Error>) -> Void) {
-        storage.child(path).downloadURL { url, error in
+    func url(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        storage.child("images/" + path).downloadURL { url, error in
             guard let url = url, error == nil else {
                 completion(
                     .failure(StorageMangerError.downloadUrlError)

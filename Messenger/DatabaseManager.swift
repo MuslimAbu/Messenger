@@ -86,3 +86,47 @@ extension DatabaseManager {
         }
     }
 }
+
+// MARK: - Convesration
+
+extension DatabaseManager {
+    
+    func createConversation(
+        otherUserEmail: String,
+        message: Message,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUserEmail = ProfileUserDefaults.email else {
+            return
+        }
+        
+        let reference = database.child(currentUserEmail.safe)
+        
+        reference.observeSingleEvent(of: .value) { snapshot in
+            guard var user = snapshot.value as? [String: Any] else {
+                completion(false)
+                return
+            }
+            
+        let conversation = [
+            "conversation_id": "conversation_\(message.messageId)",
+            "otherUserEmail": otherUserEmail,
+            "latest_message": [
+                "date": String(Date().timeIntervalSince1970),
+                "message_type": "text",
+                "is_read": false
+            ]
+        ]
+         
+            if let conversation = user["conversations"] {
+                
+            } else {
+                let conversations = [conversation]
+                
+                user["conversations"] = conversations
+                
+                reference.setValue(user)
+            }
+        }
+    }
+}

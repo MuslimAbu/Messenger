@@ -7,8 +7,9 @@
 
 import UIKit
 import MessageKit
+import InputBarAccessoryView
 
-final class MessageType: MessageKit.MessageType {
+final class Message: MessageKit.MessageType {
     let sender: MessageKit.SenderType
     let messageId: String
     let sentDate: Date
@@ -33,10 +34,18 @@ final class Sender: MessageKit.SenderType {
 }
 
 final class ConversationViewController: MessagesViewController {
+    
+    private var messages: [Message] = []
+    
+    private var sender = Sender(senderId: "12345", displayName: "John John")
+    
+    private let otherUserEmail: String
 
     // MARK: - Init
     
-    init() {
+    init(otherUserEmail: String) {
+        self.otherUserEmail = otherUserEmail
+        
         super.init(nibName: nil, bundle: nil)
         
         hidesBottomBarWhenPushed = true
@@ -50,8 +59,30 @@ final class ConversationViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        messages.append(
+            Message(
+            sender: sender,
+            messageId: "Abcdefg",
+            sentDate: Date(),
+            kind: .text("Привет, что делаешь?")
+            )
+        )
+        
+        messages.append(
+            Message(
+            sender: sender,
+            messageId: "Abcdefgded",
+            sentDate: Date(),
+            kind: .text("Привет, что делаешь?")
+            )
+        )
+        
         messagesCollectionView.dataSource = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        
+        messageInputBar.delegate = self
         
         view.backgroundColor = .white
     }
@@ -60,22 +91,45 @@ final class ConversationViewController: MessagesViewController {
 extension ConversationViewController: MessagesDataSource {
     
     var currentSender: any MessageKit.SenderType {
-        Sender(senderId: "12345", displayName: "John Smith")
+        sender
     }
     
     func messageForItem(
         at indexPath: IndexPath,
         in messagesCollectionView: MessageKit.MessagesCollectionView
     ) -> any MessageKit.MessageType {
-        MessageType(
-            sender: Sender(senderId: "123", displayName: "John Smith"),
-            messageId: "Abcdefg",
-            sentDate: Date(),
-            kind: .text("Привет, что делаешь?")
-        )
+        messages[indexPath.item]
     }
     
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
-        5
+        messages.count
     }
 }
+
+// MARK: - InputBarAccessoryViewDelegate
+
+extension ConversationViewController: InputBarAccessoryViewDelegate {
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        let message = Message(
+            sender: sender,
+            messageId: "123",
+            sentDate: Date(),
+            kind: .text(text)
+        )
+        DatabaseManager.shared.createConversation(otherUserEmail: otherUserEmail, message: message) { success in
+            if success {
+                print("Успешно")
+            } else {
+                print("Неуспешно")
+            }
+        }
+    }
+}
+
+// MARK: - MessagesDisplayDelegate
+
+extension ConversationViewController: MessagesDisplayDelegate {}
+
+// MARK: - MessagesLayoutDelegate
+
+extension ConversationViewController: MessagesLayoutDelegate {}

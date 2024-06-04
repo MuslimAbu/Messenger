@@ -9,7 +9,7 @@ import UIKit
 
 final class NewConversationViewController: UIViewController {
     
-    var completion: ((String) -> Void)?
+    var completion: ((String, String) -> Void)?
     
     private var fetchedUsers: [ChatUser] = []
     
@@ -140,7 +140,7 @@ extension NewConversationViewController: UITableViewDelegate {
         let item = items[indexPath.row]
         
         dismiss(animated: true) { [weak self] in
-            self?.completion?(item.username)
+            self?.completion?(item.username, item.email)
         }
     }
 }
